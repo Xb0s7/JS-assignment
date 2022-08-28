@@ -15,10 +15,10 @@ export const constructAllMatches = (events) => {
     return allMatches;
 };
 
-export const groupMatchesByLeage = (matches) => {
+export const groupMatchesByLeague = (matches) => {
     let matchesGroupedByLeague = [];
     let previousLeague = {};
-    console.log(matches);
+
     matches.forEach((match) => {
         if (previousLeague.league === match.league) {
             let newLeagueWithMatches = {
@@ -34,4 +34,31 @@ export const groupMatchesByLeage = (matches) => {
         }
     });
     return matchesGroupedByLeague;
+};
+
+export const constructMatchesByLeague = (events) => {
+    let sortByLeague = [];
+
+    events.forEach((event) => {
+        const eventIndex = sortByLeague.findIndex((el) => el.categoryID === event.$.CategoryID);
+
+        let splitedName = event.$.Name.split(', ');
+        let eventName = splitedName[0];
+        let league = splitedName[1];
+
+        if (eventIndex >= 0) {
+            let mainEvent = sortByLeague[eventIndex];
+
+            let mainEventLeagues = [...mainEvent.leagues, { league, matches: [...event.Match] }];
+            mainEvent.leagues = [...mainEventLeagues];
+        } else {
+            sortByLeague.push({
+                name: eventName,
+                categoryID: event.$.CategoryID,
+                leagues: [{ league, id: event.$.ID, matches: [...event.Match] }],
+            });
+        }
+    });
+
+    return sortByLeague;
 };

@@ -1,19 +1,19 @@
 import { useMemo } from 'react';
-import { constructAllMatches, groupMatchesByLeage } from '../utils/helper-functions';
-import { Event } from './Event';
+import { constructAllMatches, groupMatchesByLeague } from '../utils/helper-functions';
+import { League } from './League';
 
-export const MatchesByDateWrapper = ({ matches }) => {
+export const MatchesByDateWrapper = ({ events }) => {
     const content = useMemo(() => {
-        const constructedAllMatches = constructAllMatches(matches);
+        const constructedAllMatches = constructAllMatches(events);
         const sortedMatchesByDate = constructedAllMatches.sort((a, b) => {
             return new Date(a.date) - new Date(b.date);
         });
-        const groupedMatchesByLeague = groupMatchesByLeage(sortedMatchesByDate);
+        const groupedMatchesByLeague = groupMatchesByLeague(sortedMatchesByDate);
 
         return groupedMatchesByLeague.map((event, index) => (
-            <Event {...{ event }} key={index}></Event>
+            <League {...{ event }} key={index}></League>
         ));
-    }, [matches]);
+    }, [events]);
 
     return content;
 };
