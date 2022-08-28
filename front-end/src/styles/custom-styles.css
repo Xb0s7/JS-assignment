@@ -1,0 +1,68 @@
+.header{ 
+    background-color:#213951;
+    width: 100%;
+    display: flex;
+    color: white;
+    padding: 20px;
+    font-weight: bold
+    
+}
+
+.event-info{
+    background-color:rgba(192, 191, 191, 0.479);
+    display: flex;
+    padding: 5px 5px 5px 20px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.event-name{
+    width:50%;
+    display:flex
+}
+
+.event-odds{
+    width: 50%;
+    display: flex;
+}
+.odd{
+    width:33%
+}
+
+.odd p {
+    font-size: 14px;
+}
+
+.match-container{
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid rgba(192, 191, 191, 0.479);;
+}
+
+.match-info {
+    display: flex;
+    width: 50%;
+    padding: 5px;
+    align-items: center;
+}
+
+.match-bets{
+    display: flex;
+    width: 50%;
+    align-items: center;
+}
+
+.match-bet{
+    width:33.3%;
+}
+
+.match-date{
+    width: 25%;
+    font-weight: bold;
+}
+
+.match-name {
+    color :     #7f93bb;
+    width: 75%;
+    padding: 0px 5px;
+}
