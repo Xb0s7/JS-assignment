@@ -3,14 +3,13 @@ import axios from 'axios';
 import { LoadingSpinner } from '../components/Spinner';
 import { MatchesByDateWrapper } from '../components/MatchesByDateWrapper';
 import { MatchesByLeagueWrapper } from '../components/MatchesByLeagueWrapper';
+
 export const MatchFeed = () => {
     const [events, setEvents] = useState();
 
     const [loading, setLoading] = useState(false);
 
     const [isSortedByDate, setIsSortedByDate] = useState(false);
-
-    console.log(events);
 
     useEffect(() => {
         const fetchData = async () => {
